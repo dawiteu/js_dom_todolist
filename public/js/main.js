@@ -44,13 +44,23 @@ function checktaches(){
     const tache = document.querySelectorAll("div.tache"); 
     tache.forEach((t) => {
 
-        t.addEventListener("click", () =>{
-            //console.log(t.getAttribute('id'));
-            t.style.border="1px solid black";
-            t.style.margin="0px";
-            t.style.position="absolute";
-            console.log(t);
-            dragElement(document.getElementById(t.getAttribute('id')));
+        t.addEventListener("dblclick", (ev) =>{
+        //     //console.log(t.getAttribute('id'));
+        console.log(ev);
+        console.log(ev.target);
+        console.log(ev.currentTarget); 
+
+            // if(ev.target === ev.currentTarget){
+            //     console.log('ici');
+            //         t.style.border="1px solid black";
+            //         t.style.margin="0px";
+            //         t.style.position="absolute";
+            //         console.log(t);
+            //         dragElement(document.getElementById(t.getAttribute('id')));
+            // }else{
+            //     t.style.border="0px solid black";
+            // }
+
         });
 
         const btnin = t.querySelectorAll("button");
@@ -60,7 +70,10 @@ function checktaches(){
                     switch(i){
                         case 0:
                             if(!inmodif){
+                                console.log('ulaa');
                                 inmodif=true;
+                                e.parentNode.style.draggable = "none"; 
+
                                 let oldName = e.parentNode.children[1]; 
                                 let oldValName = oldName.innerHTML; 
                                 let newInput = document.createElement('input'); 
