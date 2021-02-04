@@ -1,5 +1,4 @@
 import{dragElement} from "./class/drag.js"; 
-import {Tache} from  "./class/tache.js"; 
 import {darkmode} from "./class/dark.js"; 
 
 const input = document.querySelector("input[type=text]"); 
@@ -38,6 +37,7 @@ let addTache = () => {
     }
 }
 
+
 // pour les mod's et supp's 
 let inmodif=false; // est ce que un input est 'ouvert' pour une modification? 
 let dragmode=false; // est ce que le div est draggable ? 
@@ -52,14 +52,17 @@ function checktaches(){
         console.log(ev.target);
         console.log(ev.currentTarget); 
 
-             if(ev.target === ev.currentTarget){
-                 console.log('ici');
-                     t.style.border="1px solid black";
-                     t.style.margin="0px";
-                     t.style.position="absolute";
-                     console.log(t);
-                     dragElement(document.getElementById(t.getAttribute('id')));
-             }
+            if(ev.target === ev.currentTarget){
+                console.log('ici');
+                    t.style.border="1px solid black";
+                    t.style.margin="0px";
+                    t.style.position="absolute";
+                    console.log(t);
+                    dragElement(document.getElementById(t.getAttribute('id')));
+                    dragmode=true;
+            }
+
+            
 
         });
 
@@ -71,6 +74,14 @@ function checktaches(){
                         case 0:
                             if(!inmodif){
                                 inmodif=true;
+                                if(dragmode){
+                                    console.log('il est draggable');
+                                    let idparent = e.parentNode.getAttribute('id'); 
+                                    //dragElement(('#'+idparent).call(dragElement(closeDragElement())));
+                                    
+                                }else{
+                                    console.log('il nest pas draggable');
+                                }
                                     //e.parentNode.style.draggable = "none"; 
 
                                 let oldName = e.parentNode.children[1]; 
@@ -114,6 +125,7 @@ function checktaches(){
     });
 }
 
+
 // buttons DO / ToDo // All 
 btnad.forEach((e, i) =>{ 
     e.addEventListener('click', () =>{
@@ -155,12 +167,18 @@ btnad.forEach((e, i) =>{
             break; 
 
             case 4:
-                darkmode(); 
-                //document.body.style.backgroundColor="black";
+                taches = []; // on ecrase le tableau
+                divTa.innerHTML=""; // on vide 
+                console.log(taches); // on log let ableau 
+            break;
+            case 5:
+                darkmode();
             break;
         }
     })
 })
+
+
 
 
 
