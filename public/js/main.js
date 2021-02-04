@@ -1,10 +1,11 @@
 import{dragElement} from "./class/drag.js"; 
 import {Tache} from  "./class/tache.js"; 
-
+import {darkmode} from "./class/dark.js"; 
 
 const input = document.querySelector("input[type=text]"); 
 const btnad = document.querySelectorAll("button");
 const divTa = document.querySelector("div#tachelist"); // div avec tt les taches
+
 
 
 let taches = []; // tableau avec toutes les taches ;; 
@@ -39,6 +40,7 @@ let addTache = () => {
 
 // pour les mod's et supp's 
 let inmodif=false; // est ce que un input est 'ouvert' pour une modification? 
+let dragmode=false; // est ce que le div est draggable ? 
 
 function checktaches(){ 
     const tache = document.querySelectorAll("div.tache"); 
@@ -50,16 +52,14 @@ function checktaches(){
         console.log(ev.target);
         console.log(ev.currentTarget); 
 
-            // if(ev.target === ev.currentTarget){
-            //     console.log('ici');
-            //         t.style.border="1px solid black";
-            //         t.style.margin="0px";
-            //         t.style.position="absolute";
-            //         console.log(t);
-            //         dragElement(document.getElementById(t.getAttribute('id')));
-            // }else{
-            //     t.style.border="0px solid black";
-            // }
+             if(ev.target === ev.currentTarget){
+                 console.log('ici');
+                     t.style.border="1px solid black";
+                     t.style.margin="0px";
+                     t.style.position="absolute";
+                     console.log(t);
+                     dragElement(document.getElementById(t.getAttribute('id')));
+             }
 
         });
 
@@ -70,9 +70,8 @@ function checktaches(){
                     switch(i){
                         case 0:
                             if(!inmodif){
-                                console.log('ulaa');
                                 inmodif=true;
-                                e.parentNode.style.draggable = "none"; 
+                                    //e.parentNode.style.draggable = "none"; 
 
                                 let oldName = e.parentNode.children[1]; 
                                 let oldValName = oldName.innerHTML; 
@@ -83,7 +82,7 @@ function checktaches(){
                                 e.parentNode.insertBefore(newInput, e.parentNode.children[1]); 
                                 e.parentNode.children[2].remove();
 
-                                    //modifs acceptation: 
+                                //modifs acceptation: 
 
                                 const inptModif = document.querySelector("input.chtachename"); 
 
@@ -106,7 +105,7 @@ function checktaches(){
                         case 1:
                             taches.splice(taches.indexOf(e.parentElement), 1); 
                                 //console.log(e.parentElement);
-                                //console.log(taches);
+                            console.log(taches);
                             e.parentElement.remove();
                         break;
                     }
@@ -148,6 +147,11 @@ btnad.forEach((e, i) =>{
                     divTa.appendChild(e);
                 });
             break; 
+
+            case 4:
+                darkmode(); 
+                //document.body.style.backgroundColor="black";
+            break;
         }
     })
 })

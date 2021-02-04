@@ -54,11 +54,18 @@ nav>div>button{
     padding:5px; 
     border-radius:5px;
 }
-
+nav>div>button.active{
+    color:white;
+    background-color: blue;
+}
 nav>div>button:hover{
     cursor:pointer;
     background-color: blue;
     color:white;
+}
+
+nav>div>button:nth-child(4){
+    border:1px dashed darkcyan;
 }
 
 div#tachelist{
