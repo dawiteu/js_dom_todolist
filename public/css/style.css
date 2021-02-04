@@ -8,6 +8,7 @@ body{
     background-color: azure;
     font-family: sans-serif;
     font-size:15px;
+    overflow: hidden;
 }
 
 nav{

@@ -82,7 +82,7 @@ function checktaches(){
                                 e.parentNode.insertBefore(newInput, e.parentNode.children[1]); 
                                 e.parentNode.children[2].remove();
 
-                                //modifs acceptation: 
+                                // modifs acceptation: 
 
                                 const inptModif = document.querySelector("input.chtachename"); 
 
@@ -123,6 +123,8 @@ btnad.forEach((e, i) =>{
             break;
 
             case 1:
+                btnad.forEach((elem) => { elem.classList.remove('active') }); 
+                e.classList.add('active');
                 divTa.innerHTML="";
                 taches.forEach((e) =>{
                     let inputCheck = e.children[0].checked; 
@@ -133,6 +135,8 @@ btnad.forEach((e, i) =>{
             break;
 
             case 2:  
+            btnad.forEach((elem) => { elem.classList.remove('active') }); 
+            e.classList.add('active');
                 divTa.innerHTML="";
                 taches.forEach((e) =>{
                     let inputCheck = e.children[0].checked; 
@@ -142,6 +146,8 @@ btnad.forEach((e, i) =>{
                 });
             break;
             case 3:
+                btnad.forEach((elem) => { elem.classList.remove('active') }); 
+                e.classList.add('active');
                 divTa.innerHTML="";
                 taches.forEach((e) =>{
                     divTa.appendChild(e);
